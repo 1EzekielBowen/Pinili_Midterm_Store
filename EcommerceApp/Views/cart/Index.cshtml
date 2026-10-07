@@ -1,0 +1,59 @@
+@model IEnumerable<EcommerceApp.Models.CartItems>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Your Cart</h1>
+
+@if (!Model.Any())
+{
+    <p>Your cart is empty.</p>
+    <a asp-controller="Products" asp-action="Index">Continue shopping</a>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.productName</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>
+                        <form asp-action="UpdateQuantity" method="post" class="d-flex">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <input type="number" name="quantity" value="@item.Quantity"
+                                   min="1" class="form-control form-control-sm me-2" style="width:80px" />
+                            <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                        </form>
+                    </td>
+                    <td>@((item.Price * item.Quantity).ToString("C"))</td>
+                    <td>
+                        <form asp-action="Remove" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                <td colspan="2"><strong>@(((decimal)ViewBag.Total).ToString("C"))</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a asp-controller="Products" asp-action="Index">Continue shopping</a>
+}
