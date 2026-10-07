@@ -197,9 +197,9 @@ main[role="main"] {
 /* Pop up page */
 
 .modal-header {
-    background-color: var(--dark-green_);
+    background-color: var(--dark-green);
     color: var(--white);
 }
 
-.modal-header .modal-title {color: var(--white); }
-.modal-hedaer .btn-cclose {filter: invert(1); }
+.modal-header .modal-title {color: var(--black); }
+.modal-hedaer .btn-close {filter: invert(1); }
