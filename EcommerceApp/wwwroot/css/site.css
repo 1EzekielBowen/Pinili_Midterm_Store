@@ -1,31 +1,205 @@
+/* Palette  */
+:root {
+    --forest-green: #1F7A33; /* background */
+    --dark-green:   #0F3D24;/* html text */
+    --charcoal:     #22262A;/* footer */
+    --light-grey:   #EEF0EE;/* accent*/
+    --white:        #FFFFFF;/* main bg
+    --grey-border:  #D9DDDA; /*border*/
+}
+
+/* ===== Base (keeps the template's sticky-footer behavior) ===== */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html { font-size: 16px; }
 }
 
 body {
-  margin-bottom: 60px;
+    background: linear-gradient(160deg, var(--forest-green) 0%, var(--dark-green)  100%);
+    background-attachment: fixed;
+    color: var(--charcoal);
+    margin-bottom: 60px;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+h1, h2, h3, h4, h5, h6 { color: var(--dark-green); }
+
+a { color: var(--forest-green); }
+a:hover { color: var(--dark-green); }
+
+.text-muted { color: rgba(34, 38, 42, 0.65) !important; }
+
+/* ===== Navbar ===== */
+.navbar.bg-dark {
+    background-color: var(--dark-green) !important;
+    border-bottom: 3px solid var(--forest-green);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar .navbar-brand {
+    color: var(--white);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 2px solid transparent;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: var(--white);
+    border-bottom-color: var(--forest-green);
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+    --bs-btn-color: var(--white);
+    --bs-btn-bg: var(--dark-green);
+    --bs-btn-border-color: var(--dark-green);
+    --bs-btn-hover-color: var(--white);
+    --bs-btn-hover-bg: var(--charcoal);
+    --bs-btn-hover-border-color: var(--charcoal);
+    --bs-btn-active-color: var(--white);
+    --bs-btn-active-bg: var(--charcoal);
+    --bs-btn-active-border-color: var(--charcoal);
+    --bs-btn-focus-shadow-rgb: 31, 122, 51;
+    --bs-btn-disabled-bg: var(--dark-green);
+    --bs-btn-disabled-border-color: var(--dark-green);
+}
+
+.btn-success {
+    --bs-btn-color: var(--white);
+    --bs-btn-bg: var(--forest-green);
+    --bs-btn-border-color: var(--forest-green);
+    --bs-btn-hover-color: var(--white);
+    --bs-btn-hover-bg: var(--dark-green);
+    --bs-btn-hover-border-color: var(--dark-green);
+    --bs-btn-active-color: var(--white);
+    --bs-btn-active-bg: var(--dark-green);
+    --bs-btn-active-border-color: var(--dark-green);
+    --bs-btn-focus-shadow-rgb: 31, 122, 51;
+    --bs-btn-disabled-bg: var(--forest-green);
+    --bs-btn-disabled-border-color: var(--forest-green);
+}
+
+.btn-outline-secondary {
+    --bs-btn-color: var(--charcoal);
+    --bs-btn-border-color: var(--charcoal);
+    --bs-btn-hover-color: var(--white);
+    --bs-btn-hover-bg: var(--charcoal);
+    --bs-btn-hover-border-color: var(--charcoal);
+    --bs-btn-active-color: var(--white);
+    --bs-btn-active-bg: var(--charcoal);
+    --bs-btn-active-border-color: var(--charcoal);
+}
+
+.btn-link { color: var(--forest-green); }
+.btn-link:hover { color: var(--dark-green); }
+
+/* ===== Cards ===== */
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--grey-border);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card.h-100:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(34, 38, 42, 0.15) !important;
+}
+
+.card-title { color: var(--charcoal); }
+
+.card-footer {
+    background-color: var(--white);
+    border-top: 1px solid var(--grey-border);
+}
+
+.badge.bg-secondary {
+    background-color: var(--forest-green) !important;
+}
+
+/* ===== Tables (Cart) ===== */
+.table {
+    --bs-table-color: var(--charcoal);
+    --bs-table-striped-bg: var(--light-grey);
+    --bs-table-striped-color: var(--charcoal);
+    --bs-table-border-color: var(--grey-border);
+}
+
+.table > thead.table-light,
+.table > thead.table-light th {
+    background-color: var(--dark-green);
+    color: var(--white);
+    border-color: var(--dark-green);
+}
+
+/* ===== Forms ===== */
+.form-control {
+    border-color: var(--grey-border);
+    color: var(--charcoal);
+}
+
+.form-control:focus {
+    border-color: var(--forest-green);
+    box-shadow: 0 0 0 0.2rem rgba(31, 122, 51, 0.25);
+}
+
+/* ===== Alerts ===== */
+.alert-info {
+    background-color: var(--white);
+    color: var(--charcoal);
+    border: 1px solid var(--grey-border);
+    border-left: 5px solid var(--forest-green);
+}
+
+/* ===== Footer ===== */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    background-color: var(--charcoal);
+    border-top: 0 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.footer a { color: var(--white); }
+
+/* ===== Product card image placeholder ===== */
+.product-img {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--dark-green), var(--forest-green));
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: 700;
+    border-top-left-radius: calc(0.375rem - 1px);
+    border-top-right-radius: calc(0.375rem - 1px);
+}
+
+main[role="main"] {
+  background-color: var(--light-grey);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.25);
+}
+
+/* Pop up page */
+
+.modal-header {
+    background-color: var(--dark-green_);
+    color: var(--white);
+}
+
+.modal-header .modal-title {color: var(--white); }
+.modal-hedaer .btn-cclose {filter: invert(1); }
