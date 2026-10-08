@@ -15,9 +15,20 @@ namespace EcommerceApp.Controllers
         }
 
         // read
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? searchString)
         {
-            return View(await _context.Products.ToListAsync());
+            var products = _context.Products.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                products = products.Where(p =>
+                    p.Name.Contains(searchString) ||
+                    p.Description.Contains(searchString) ||
+                    p.Category.Contains(searchString));
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+            return View(await products.ToListAsync());
         }
 
         // create
